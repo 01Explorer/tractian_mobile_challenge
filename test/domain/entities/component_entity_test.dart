@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tractian_challenge/core/enums/helper_types.dart';
+import 'package:tractian_challenge/domain/entities/abstract_classes/item.dart';
 import 'package:tractian_challenge/domain/entities/component_entity.dart';
 
 void main() {
@@ -36,10 +37,13 @@ void main() {
     ),
   );
 
-  test('the created entities should be a ComponentEntity', () {
+  test('the created entities should be a ComponentEntity and an Item', () {
     expect(childComponent, isA<ComponentEntity>());
+    expect(childComponent, isA<Item>());
     expect(locationChildComponent, isA<ComponentEntity>());
+    expect(locationChildComponent, isA<Item>());
     expect(rootComponent, isA<ComponentEntity>());
+    expect(rootComponent, isA<Item>());
   });
 
   test(
