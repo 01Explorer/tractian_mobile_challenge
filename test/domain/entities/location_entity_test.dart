@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tractian_challenge/domain/entities/abstract_classes/item.dart';
 import 'package:tractian_challenge/domain/entities/location_entity.dart';
 
 void main() {
@@ -14,9 +15,11 @@ void main() {
     id: '656a07bbf2d4a1001e2144c2',
   );
 
-  test('The created entities should be a LocationEntity', () {
+  test('The created entities should be a LocationEntity and an Item', () {
     expect(rootLocation, isA<LocationEntity>());
+    expect(rootLocation, isA<Item>());
     expect(subLocation, isA<LocationEntity>());
+    expect(subLocation, isA<Item>());
   });
 
   test('A root locationEntity should have parentId == null', () {
