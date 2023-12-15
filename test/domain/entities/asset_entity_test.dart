@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tractian_challenge/domain/entities/abstract_classes/item.dart';
 import 'package:tractian_challenge/domain/entities/asset_entity.dart';
 
 void main() {
@@ -23,10 +24,13 @@ void main() {
     id: '656a07c3f2d4a1001e2144c5',
   );
 
-  test('the created entities should be an AssetEntity', () {
+  test('the created entities should be an AssetEntity and a Item', () {
     expect(childAsset, isA<AssetEntity>());
+    expect(childAsset, isA<Item>());
     expect(locationChildAsset, isA<AssetEntity>());
+    expect(locationChildAsset, isA<Item>());
     expect(rootAsset, isA<AssetEntity>());
+    expect(rootAsset, isA<Item>());
   });
 
   test(
