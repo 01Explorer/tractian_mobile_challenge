@@ -42,17 +42,31 @@ class CompanyRepositoryImpl implements CompanyRepository {
       return Left(
           TreeFailure(message: result.fold((l) => l.message, (r) => '')));
     }
-
+    final itemsMap = <String, Item>{};
     final listOfJsons = result.fold((l) => <Map<String, dynamic>>[], (r) => r);
-    final List<Item> componentsList = [];
+    final List<Item> rootsList = [];
     for (final entry in listOfJsons) {
-      componentsList.add(switch (entry['type']) {
-        'location' => LocationModel.fromJson(entry).toLocationEntity(),
-        'asset' => AssetModel.fromJson(entry).toAssetEntity(),
-        _ => ComponentModel.fromJson(entry).toComponentEntity(),
-      });
+      itemsMap.putIfAbsent(
+          entry['id'],
+          () => switch (entry['type']) {
+                locationType =>
+                  LocationModel.fromJson(entry).toLocationEntity(),
+                assetType => AssetModel.fromJson(entry).toAssetEntity(),
+                _ => ComponentModel.fromJson(entry).toComponentEntity(),
+              });
+
+      if (entry['parentId'] == null && entry['locationId'] == null) {
+        rootsList.add(itemsMap[entry['id']]!);
+      }
+
+      for (final item in itemsMap.values) {
+        if (item.isRoot) {
+          continue;
+        }
+        itemsMap[item.parent]!.addChildren(item);
+      }
     }
 
-    return Right(componentsList);
+    return Right(rootsList);
   }
 }
