@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:tractian_challenge/core/exceptions/failure_exception.dart';
 import 'package:tractian_challenge/core/helpers/constansts.dart';
+import 'package:tractian_challenge/core/helpers/extensions.dart';
 import 'package:tractian_challenge/data/datasources/local/local_datasource.dart';
 import 'package:tractian_challenge/data/models/asset_model.dart';
 import 'package:tractian_challenge/data/models/component_model.dart';
@@ -46,16 +47,9 @@ class CompanyRepositoryImpl implements CompanyRepository {
     final listOfJsons = result.fold((l) => <Map<String, dynamic>>[], (r) => r);
     final List<Item> rootsList = [];
     for (final entry in listOfJsons) {
-      itemsMap.putIfAbsent(
-          entry['id'],
-          () => switch (entry['type']) {
-                locationType =>
-                  LocationModel.fromJson(entry).toLocationEntity(),
-                assetType => AssetModel.fromJson(entry).toAssetEntity(),
-                _ => ComponentModel.fromJson(entry).toComponentEntity(),
-              });
+      _addItemToMap(itemsMap, entry);
 
-      if (entry['parentId'] == null && entry['locationId'] == null) {
+      if (entry.isRoot) {
         rootsList.add(itemsMap[entry['id']]!);
       }
 
@@ -68,5 +62,15 @@ class CompanyRepositoryImpl implements CompanyRepository {
     }
 
     return Right(rootsList);
+  }
+
+  void _addItemToMap(Map<String, Item> itemsMap, Map<String, dynamic> entry) {
+    itemsMap.putIfAbsent(
+        entry['id'],
+        () => switch (entry['type']) {
+              locationType => LocationModel.fromJson(entry).toLocationEntity(),
+              assetType => AssetModel.fromJson(entry).toAssetEntity(),
+              _ => ComponentModel.fromJson(entry).toComponentEntity(),
+            });
   }
 }
