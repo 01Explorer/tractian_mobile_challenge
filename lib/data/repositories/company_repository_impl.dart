@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:tractian_challenge/core/exceptions/failure_exception.dart';
+import 'package:tractian_challenge/core/helpers/constansts.dart';
 import 'package:tractian_challenge/data/datasources/local/local_datasource.dart';
 import 'package:tractian_challenge/domain/entities/company_entity.dart';
 import 'package:tractian_challenge/domain/repositories/company_repository.dart';
@@ -11,7 +12,8 @@ class CompanyRepositoryImpl implements CompanyRepository {
   @override
   Future<Either<Failure, List<CompanyEntity>>> fetchCompanies() async {
     try {
-      final result = await _localDataSource.fetchCompanies();
+      final result =
+          await _localDataSource.fetchCompanies(dirPath: sampleDataDir);
       final companiesList = result.fold(
         (l) => null,
         (r) => r,
