@@ -114,4 +114,25 @@ class MockLocalDataSource extends _i1.Mock implements _i8.LocalDataSource {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, List<String>>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<Map<String, dynamic>>>>
+      getCompanyTreeComponents({required String? dirPath}) =>
+          (super.noSuchMethod(
+            Invocation.method(
+              #getCompanyTreeComponents,
+              [],
+              {#dirPath: dirPath},
+            ),
+            returnValue: _i4.Future<
+                    _i2.Either<_i5.Failure, List<Map<String, dynamic>>>>.value(
+                _FakeEither_0<_i5.Failure, List<Map<String, dynamic>>>(
+              this,
+              Invocation.method(
+                #getCompanyTreeComponents,
+                [],
+                {#dirPath: dirPath},
+              ),
+            )),
+          ) as _i4.Future<_i2.Either<_i5.Failure, List<Map<String, dynamic>>>>);
 }
