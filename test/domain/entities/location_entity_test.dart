@@ -29,4 +29,10 @@ void main() {
   test('A sublocation locationEntity should have parentId != null', () {
     expect(subLocation.parentId, isNotNull);
   });
+
+  test('Adding an item as child should increase the children list length', () {
+    expect(rootLocation.itemChildren, isEmpty);
+    rootLocation.addChildren(subLocation);
+    expect(rootLocation.itemChildren, isNotEmpty);
+  });
 }
