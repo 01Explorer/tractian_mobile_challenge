@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:tractian_challenge/domain/entities/component_entity.dart';
 
-abstract class Item {
+abstract class Item extends Equatable {
   final String name;
   final String? parentId;
   final String? locationId;
