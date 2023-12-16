@@ -10,5 +10,9 @@ interface class Failure extends Equatable {
 }
 
 class CompanyFailure extends Failure {
-  const CompanyFailure({required String message}) : super(message: message);
+  const CompanyFailure({required super.message});
+}
+
+class TreeFailure extends Failure {
+  const TreeFailure({required super.message});
 }
