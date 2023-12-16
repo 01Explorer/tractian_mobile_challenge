@@ -63,4 +63,10 @@ void main() {
             id: '656a07c3f2d4a1001e2144c5'),
         throwsAssertionError);
   });
+
+  test('Adding an item as child should increase the children list length', () {
+    expect(rootAsset.itemChildren, isEmpty);
+    rootAsset.addChildren(childAsset);
+    expect(rootAsset.itemChildren, isNotEmpty);
+  });
 }
