@@ -15,6 +15,15 @@ abstract class Item extends Equatable {
     required this.id,
   });
 
+  bool get isRoot => parentId == null && locationId == null;
+
+  String? get parent {
+    if (isRoot) {
+      return null;
+    }
+    return parentId ?? locationId;
+  }
+
   void addChildren(Item item) {
     if (item is ComponentEntity) {
       throw Exception('Components cannot have children');
