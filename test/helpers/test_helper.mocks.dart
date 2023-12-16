@@ -74,11 +74,13 @@ class MockLocalDataSource extends _i1.Mock implements _i7.LocalDataSource {
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<String>>> fetchCompanies() =>
+  _i4.Future<_i2.Either<_i5.Failure, List<String>>> fetchCompanies(
+          {required String? dirPath}) =>
       (super.noSuchMethod(
         Invocation.method(
           #fetchCompanies,
           [],
+          {#dirPath: dirPath},
         ),
         returnValue: _i4.Future<_i2.Either<_i5.Failure, List<String>>>.value(
             _FakeEither_0<_i5.Failure, List<String>>(
@@ -86,6 +88,7 @@ class MockLocalDataSource extends _i1.Mock implements _i7.LocalDataSource {
           Invocation.method(
             #fetchCompanies,
             [],
+            {#dirPath: dirPath},
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, List<String>>>);
