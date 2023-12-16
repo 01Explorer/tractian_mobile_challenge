@@ -6,4 +6,11 @@ class LocationEntity extends Item {
     required super.parentId,
     required super.id,
   }) : super(locationId: null);
+
+  @override
+  List<Object?> get props => [
+        name,
+        parentId,
+        id,
+      ];
 }

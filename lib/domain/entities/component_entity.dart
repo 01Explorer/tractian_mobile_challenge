@@ -10,4 +10,13 @@ class ComponentEntity extends Item {
     required this.sensor,
     required super.locationId,
   }) : assert(parentId == null || locationId == null);
+
+  @override
+  List<Object?> get props => [
+        name,
+        parentId,
+        id,
+        sensor,
+        locationId,
+      ];
 }

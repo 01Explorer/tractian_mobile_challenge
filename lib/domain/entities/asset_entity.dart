@@ -7,4 +7,12 @@ class AssetEntity extends Item {
     required super.locationId,
     required super.id,
   }) : assert(locationId == null || parentId == null);
+
+  @override
+  List<Object?> get props => [
+        name,
+        parentId,
+        locationId,
+        id,
+      ];
 }
