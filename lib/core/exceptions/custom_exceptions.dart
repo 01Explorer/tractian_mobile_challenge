@@ -1,5 +1,10 @@
-class CompanyException implements Exception {
+import 'package:equatable/equatable.dart';
+
+class CompanyException extends Equatable implements Exception {
   final String message;
 
-  CompanyException({required this.message});
+  const CompanyException({required this.message});
+
+  @override
+  List<Object?> get props => [message];
 }
