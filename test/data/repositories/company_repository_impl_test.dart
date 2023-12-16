@@ -84,7 +84,7 @@ void main() {
       },
     ];
     test(
-        'If calling Get Company Tree components is successful should then return a list of item',
+        'If calling Get Company Tree components is successful should then return a list of the root items and the rootItems might have children already assigned',
         () async {
       when(
         mockLocalDataSource.getCompanyTreeComponents(
@@ -107,6 +107,10 @@ void main() {
             isA<ComponentEntity>(),
           ),
         );
+        expect(item.isRoot, isTrue);
+        if (item.id == '1') {
+          expect(item.itemChildren, isNotEmpty);
+        }
       }
     });
 
