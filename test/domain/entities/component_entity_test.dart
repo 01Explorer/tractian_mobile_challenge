@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tractian_challenge/core/enums/helper_types.dart';
+import 'package:tractian_challenge/core/helpers/helper_types.dart';
 import 'package:tractian_challenge/domain/entities/abstract_classes/item.dart';
 import 'package:tractian_challenge/domain/entities/component_entity.dart';
 

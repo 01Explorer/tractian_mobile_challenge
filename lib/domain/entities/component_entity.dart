@@ -1,4 +1,4 @@
-import '../../core/enums/helper_types.dart';
+import '../../core/helpers/helper_types.dart';
 import 'abstract_classes/item.dart';
 
 class ComponentEntity extends Item {
