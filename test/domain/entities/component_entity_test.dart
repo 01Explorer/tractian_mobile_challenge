@@ -84,4 +84,11 @@ void main() {
                 )),
         throwsAssertionError);
   });
+
+  test(
+      'Adding an item in a component should throw an exception since components can\'t have children',
+      () {
+    expect(rootComponent.itemChildren, isEmpty);
+    expect(() => rootComponent.addChildren(childComponent), throwsException);
+  });
 }
