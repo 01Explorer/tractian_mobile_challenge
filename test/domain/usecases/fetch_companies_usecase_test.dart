@@ -12,7 +12,7 @@ void main() {
   late final CompanyRepository mockCompanyRepository;
   late final FetchCompaniesUsecase fetchCompaniesUsecase;
 
-  setUp(() {
+  setUpAll(() {
     mockCompanyRepository = MockCompanyRepository();
     fetchCompaniesUsecase = FetchCompaniesUsecase(mockCompanyRepository);
   });
