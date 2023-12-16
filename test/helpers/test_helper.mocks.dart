@@ -10,6 +10,8 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:tractian_challenge/core/exceptions/failure_exception.dart'
     as _i5;
 import 'package:tractian_challenge/data/datasources/local/local_datasource.dart'
+    as _i8;
+import 'package:tractian_challenge/domain/entities/abstract_classes/item.dart'
     as _i7;
 import 'package:tractian_challenge/domain/entities/company_entity.dart' as _i6;
 import 'package:tractian_challenge/domain/repositories/company_repository.dart'
@@ -63,12 +65,32 @@ class MockCompanyRepository extends _i1.Mock implements _i3.CompanyRepository {
               ),
             )),
           ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.CompanyEntity>>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i7.Item>>> getCompanyTreeComponents(
+          {required _i6.CompanyEntity? companyEntity}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getCompanyTreeComponents,
+          [],
+          {#companyEntity: companyEntity},
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i7.Item>>>.value(
+            _FakeEither_0<_i5.Failure, List<_i7.Item>>(
+          this,
+          Invocation.method(
+            #getCompanyTreeComponents,
+            [],
+            {#companyEntity: companyEntity},
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, List<_i7.Item>>>);
 }
 
 /// A class which mocks [LocalDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLocalDataSource extends _i1.Mock implements _i7.LocalDataSource {
+class MockLocalDataSource extends _i1.Mock implements _i8.LocalDataSource {
   MockLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
