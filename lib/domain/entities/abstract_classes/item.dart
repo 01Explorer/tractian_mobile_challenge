@@ -1,8 +1,11 @@
+import 'package:tractian_challenge/domain/entities/component_entity.dart';
+
 abstract class Item {
   final String name;
   final String? parentId;
   final String? locationId;
   final String id;
+  final List<Item> itemChildren = [];
 
   Item({
     required this.name,
@@ -10,4 +13,11 @@ abstract class Item {
     required this.locationId,
     required this.id,
   });
+
+  void addChildren(Item item) {
+    if (item is ComponentEntity) {
+      throw Exception('Components cannot have children');
+    }
+    itemChildren.add(item);
+  }
 }
