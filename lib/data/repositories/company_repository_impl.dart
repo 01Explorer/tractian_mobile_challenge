@@ -18,7 +18,7 @@ class CompanyRepositoryImpl implements CompanyRepository {
   Future<Either<Failure, List<CompanyEntity>>> fetchCompanies() async {
     try {
       final result =
-          await _localDataSource.fetchCompanies(dirPath: sampleDataDir);
+          await _localDataSource.fetchCompanies(dirPath: companiesFilePath);
       final companiesList = result.fold(
         (l) => null,
         (r) => r,
