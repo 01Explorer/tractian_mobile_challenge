@@ -16,5 +16,5 @@ void setupLocator() {
       FetchCompaniesUsecase(locator()));
   locator.registerSingleton<GetCompanyTreeComponentsUseCase>(
       GetCompanyTreeComponentsUseCase(locator()));
-  locator.registerFactory<CompanyBloc>(() => CompanyBloc(locator(), locator()));
+  locator.registerFactory<CompanyBloc>(() => CompanyBloc(locator()));
 }
