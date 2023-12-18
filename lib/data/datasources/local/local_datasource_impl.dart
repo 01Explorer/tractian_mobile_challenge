@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
 import 'package:tractian_challenge/core/exceptions/custom_exceptions.dart';
 
 import 'package:tractian_challenge/core/exceptions/failure_exception.dart';
@@ -13,9 +14,9 @@ import 'local_datasource.dart';
 class LocalDataSourceImpl implements LocalDataSource {
   @override
   Future<Either<Failure, List<String>>> fetchCompanies(
-      {required String dirPath}) {
-    final sampleDataDir = Directory(dirPath);
-    final namesList = sampleDataDir.listSync().map((e) => e.name).toList();
+      {required String dirPath}) async {
+    final companies = await rootBundle.loadString(dirPath);
+    final namesList = companies.split(';');
     if (namesList.isEmpty) {
       throw const CompanyException(message: 'No Companies Found');
     }
@@ -35,11 +36,7 @@ class LocalDataSourceImpl implements LocalDataSource {
       }
 
       for (final asset in listOfAssets) {
-        if (asset.isComponent) {
-          asset['type'] = componentType;
-        } else {
-          asset['type'] = assetType;
-        }
+        asset['type'] = asset.isComponent ? componentType : assetType;
       }
 
       return Right(listOfLocations..addAll(listOfAssets));
