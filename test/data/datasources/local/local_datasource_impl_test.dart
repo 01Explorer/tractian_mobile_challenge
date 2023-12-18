@@ -1,5 +1,5 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tractian_challenge/core/exceptions/custom_exceptions.dart';
 import 'package:tractian_challenge/core/exceptions/failure_exception.dart';
 import 'package:tractian_challenge/core/helpers/constansts.dart';
 import 'package:tractian_challenge/data/datasources/local/local_datasource.dart';
@@ -8,7 +8,9 @@ import 'package:tractian_challenge/data/datasources/local/local_datasource_impl.
 void main() {
   late final LocalDataSource localDataSource;
 
-  setUpAll(() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  setUpAll(() async {
     localDataSource = LocalDataSourceImpl();
   });
 
@@ -20,17 +22,18 @@ void main() {
         'Calling fetchCompanies and passing a valid folder should return a list of Strings',
         () async {
       final result =
-          await localDataSource.fetchCompanies(dirPath: sampleDataDir);
+          await localDataSource.fetchCompanies(dirPath: companiesFilePath);
       result.fold(
           (l) => expect(l, isNull), (r) => expect(r, isA<List<String>>()));
     });
 
     test(
-        'Calling fetchCompanies and passing a empty folder should throw a CompanyException',
+        'Calling fetchCompanies and passing a invlaid file should throw a Flutter Error',
         () async {
       expect(
-          () async => await localDataSource.fetchCompanies(dirPath: emptyDir),
-          throwsA(const CompanyException(message: 'No Companies Found')));
+        () async => await localDataSource.fetchCompanies(dirPath: emptyDir),
+        throwsFlutterError,
+      );
     });
   });
 
