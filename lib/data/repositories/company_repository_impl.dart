@@ -52,15 +52,13 @@ class CompanyRepositoryImpl implements CompanyRepository {
       if (entry.isRoot) {
         rootsList.add(itemsMap[entry['id']]!);
       }
-
-      for (final item in itemsMap.values) {
-        if (item.isRoot) {
-          continue;
-        }
-        itemsMap[item.parent]!.addChildren(item);
-      }
     }
-
+    for (final item in itemsMap.values) {
+      if (item.isRoot) {
+        continue;
+      }
+      itemsMap[item.parent]!.addChildren(item);
+    }
     return Right(rootsList);
   }
 
