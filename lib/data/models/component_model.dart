@@ -16,8 +16,8 @@ class ComponentModel extends ComponentEntity {
       parentId: json['parentId'],
       id: json['id'],
       sensor: (
-        sensorStatus: SensorStatus.fromString(json['status']),
-        sensorType: SensorType.fromString(json['sensorType']),
+        sensorStatus: SensorStatus.fromString(json['status'] ?? 'operating'),
+        sensorType: SensorType.fromString(json['sensorType'] ?? 'vibration'),
       ),
       locationId: json['locationId'],
     );
