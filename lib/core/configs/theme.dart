@@ -6,6 +6,7 @@ ThemeData appTheme() {
     useMaterial3: true,
     appBarTheme: const AppBarTheme(
       backgroundColor: darkerColor,
+      iconTheme: IconThemeData(color: Colors.white),
       centerTitle: true,
       titleTextStyle: TextStyle(
         color: Colors.white,
