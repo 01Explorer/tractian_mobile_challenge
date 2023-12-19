@@ -15,4 +15,6 @@ const Color companiesColors = Color(0xff0072AD);
 //assets
 const String companyIcon = 'assets/images/company_icon.png';
 const String locationIcon = 'assets/images/location_icon.png';
+const String assetIcon = 'assets/images/asset_icon.png';
+const String componentIcon = 'assets/images/component_icon.png';
 const String tractianLog = 'assets/images/logo.png';
