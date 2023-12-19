@@ -25,7 +25,7 @@ abstract class Item extends Equatable {
   }
 
   void addChildren(Item item) {
-    if (item is ComponentEntity) {
+    if (this is ComponentEntity) {
       throw Exception('Components cannot have children');
     }
     itemChildren.add(item);
