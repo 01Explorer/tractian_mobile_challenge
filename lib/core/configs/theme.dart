@@ -30,5 +30,23 @@ ThemeData appTheme() {
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: companiesColors,
     ),
+    expansionTileTheme: ExpansionTileThemeData(
+      tilePadding: EdgeInsets.zero,
+      childrenPadding: EdgeInsets.zero,
+      shape: Border(
+        left: BorderSide(
+          color: Colors.grey[400]!,
+          width: 1,
+        ),
+      ),
+      collapsedShape: Border(
+        left: BorderSide(
+          color: Colors.grey[400]!,
+          width: 1,
+        ),
+      ),
+      iconColor: companiesColors,
+      collapsedIconColor: companiesColors,
+    ),
   );
 }
