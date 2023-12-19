@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tractian_challenge/injection_container.dart';
 import 'package:tractian_challenge/main.dart';
+import 'package:tractian_challenge/presentation/tree_view/pages/bloc/tree_view_bloc.dart';
+import 'package:tractian_challenge/presentation/tree_view/pages/bloc/tree_view_event.dart';
 
 import '../../../../core/helpers/constansts.dart';
 import '../../../../domain/entities/company_entity.dart';
@@ -20,8 +24,11 @@ class CompanyListTileComponent extends StatelessWidget {
         onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => TreeView(
-              company: company,
+            builder: (context) => BlocProvider<TreeViewBloc>.value(
+              value: locator()..add(LoadTreeViewEvent(company: company)),
+              child: TreeView(
+                company: company,
+              ),
             ),
           ),
         ),
