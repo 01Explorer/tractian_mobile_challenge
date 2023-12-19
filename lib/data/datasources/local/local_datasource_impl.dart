@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
@@ -28,9 +27,9 @@ class LocalDataSourceImpl implements LocalDataSource {
       {required String dirPath}) async {
     try {
       final listOfLocations =
-          await _fileContentToMap(dirPath: '$dirPath/$locationsFileName');
+          await _fileContentToMap(filePath: '$dirPath/$locationsFileName');
       final listOfAssets =
-          await _fileContentToMap(dirPath: '$dirPath/$assetFileName');
+          await _fileContentToMap(filePath: '$dirPath/$assetFileName');
       for (final location in listOfLocations) {
         location['type'] = locationType;
       }
@@ -46,9 +45,8 @@ class LocalDataSourceImpl implements LocalDataSource {
   }
 
   Future<List<Map<String, dynamic>>> _fileContentToMap(
-      {required String dirPath}) async {
-    final locationsFile = File(dirPath);
-    final locationsonFileContent = await locationsFile.readAsString();
+      {required String filePath}) async {
+    final locationsonFileContent = await rootBundle.loadString(filePath);
     return decodeJsonList(locationsonFileContent);
   }
 
