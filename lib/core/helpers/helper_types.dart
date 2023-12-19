@@ -1,11 +1,13 @@
 enum SensorType {
   energy,
-  vibration;
+  vibration,
+  smartTracker;
 
   factory SensorType.fromString(String type) {
     return switch (type) {
       'energy' => SensorType.energy,
-      _ => SensorType.vibration,
+      'vibration' => SensorType.vibration,
+      _ => SensorType.smartTracker,
     };
   }
 }
