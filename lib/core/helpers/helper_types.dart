@@ -10,6 +10,8 @@ enum SensorType {
       _ => SensorType.smartTracker,
     };
   }
+
+  bool get isEletricSensor => this == SensorType.energy;
 }
 
 enum SensorStatus {
@@ -22,6 +24,8 @@ enum SensorStatus {
       _ => SensorStatus.operating,
     };
   }
+
+  bool get isCritical => this == SensorStatus.alert;
 }
 
 typedef Sensor = ({SensorType sensorType, SensorStatus sensorStatus});
