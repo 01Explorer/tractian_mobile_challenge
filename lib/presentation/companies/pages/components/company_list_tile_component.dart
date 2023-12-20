@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tractian_challenge/injection_container.dart';
-import 'package:tractian_challenge/main.dart';
 import 'package:tractian_challenge/presentation/tree_view/bloc/tree_view_bloc.dart';
 import 'package:tractian_challenge/presentation/tree_view/bloc/tree_view_event.dart';
 
 import '../../../../core/helpers/constansts.dart';
 import '../../../../domain/entities/company_entity.dart';
+import '../../../tree_view/pages/tree_view_page.dart';
 
 class CompanyListTileComponent extends StatelessWidget {
   const CompanyListTileComponent({
