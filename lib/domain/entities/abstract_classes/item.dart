@@ -24,6 +24,44 @@ abstract class Item extends Equatable {
     return parentId ?? locationId;
   }
 
+  bool get isCritical {
+    bool returnValue = false;
+    final List<Item> toRemove = [];
+    for (final child in itemChildren) {
+      if (child.isCritical) {
+        returnValue = true;
+        continue;
+      }
+      toRemove.add(child);
+    }
+    itemChildren.removeWhere((element) => toRemove.contains(element));
+    return returnValue;
+  }
+
+  bool get isEletricSensor {
+    bool returnValue = false;
+    final List<Item> toRemove = [];
+    for (final child in itemChildren) {
+      if (child.isEletricSensor) {
+        returnValue = true;
+        continue;
+      }
+      toRemove.add(child);
+    }
+    itemChildren.removeWhere((element) => toRemove.contains(element));
+    return returnValue;
+  }
+
+  bool isBeingSearched(String filter) {
+    for (final child in itemChildren) {
+      if (child.isBeingSearched(filter)) {
+        return true;
+      }
+    }
+
+    return name.toLowerCase().contains(filter.toLowerCase());
+  }
+
   void addChildren(Item item) {
     if (this is ComponentEntity) {
       throw Exception('Components cannot have children');
