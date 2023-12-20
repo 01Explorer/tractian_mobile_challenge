@@ -14,11 +14,41 @@ class TreeViewLoading extends TreeViewState {}
 
 class TreeViewLoaded extends TreeViewState {
   final List<Item> rootAssets;
+  final bool isFilteredByEnergySensor;
+  final bool isFilteredByCriticalSensor;
+  final String filter;
 
-  const TreeViewLoaded({required this.rootAssets});
+  const TreeViewLoaded({
+    required this.rootAssets,
+    this.filter = '',
+    this.isFilteredByEnergySensor = false,
+    this.isFilteredByCriticalSensor = false,
+  });
+
+  TreeViewLoaded copyWith({
+    List<Item>? rootAssets,
+    bool? isFilteredByEnergySensor,
+    bool? isFilteredByCriticalSensor,
+    String? filter,
+  }) {
+    return TreeViewLoaded(
+      rootAssets: rootAssets ?? this.rootAssets,
+      isFilteredByEnergySensor:
+          isFilteredByEnergySensor ?? this.isFilteredByEnergySensor,
+      isFilteredByCriticalSensor:
+          isFilteredByCriticalSensor ?? this.isFilteredByCriticalSensor,
+      filter: filter ?? this.filter,
+    );
+  }
 
   @override
-  List<Object> get props => [rootAssets, super.props];
+  List<Object> get props => [
+        rootAssets,
+        isFilteredByCriticalSensor,
+        isFilteredByEnergySensor,
+        filter,
+        super.props
+      ];
 }
 
 class TreeViewFailure extends TreeViewState {
