@@ -12,6 +12,12 @@ class ComponentEntity extends Item {
   }) : assert(parentId == null || locationId == null);
 
   @override
+  bool get isCritical => sensor.sensorStatus.isCritical;
+
+  @override
+  bool get isEletricSensor => sensor.sensorType.isEletricSensor;
+
+  @override
   List<Object?> get props => [
         name,
         parentId,
