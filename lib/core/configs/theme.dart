@@ -20,6 +20,11 @@ ThemeData appTheme() {
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
+      bodySmall: TextStyle(
+        fontSize: 14,
+        color: companiesColors,
+        fontWeight: FontWeight.bold,
+      ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
@@ -47,6 +52,19 @@ ThemeData appTheme() {
       ),
       iconColor: companiesColors,
       collapsedIconColor: companiesColors,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        surfaceTintColor: companiesColors,
+        padding: EdgeInsets.zero,
+        textStyle: const TextStyle(
+          color: companiesColors,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     ),
   );
 }
