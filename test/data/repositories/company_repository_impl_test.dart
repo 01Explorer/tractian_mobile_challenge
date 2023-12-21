@@ -28,7 +28,7 @@ void main() {
     test(
         'If calling fetch companies is successful should return a list of CompanyEntity',
         () async {
-      when(mockLocalDataSource.fetchCompanies(dirPath: sampleDataDir))
+      when(mockLocalDataSource.fetchCompanies(dirPath: companiesFilePath))
           .thenAnswer((_) async =>
               const Right(['Company 1', 'Company 2', 'Company 3']));
 
@@ -38,7 +38,7 @@ void main() {
     });
 
     test('If calling fetch companies fails should', () async {
-      when(mockLocalDataSource.fetchCompanies(dirPath: sampleDataDir))
+      when(mockLocalDataSource.fetchCompanies(dirPath: companiesFilePath))
           .thenThrow(const CompanyException(message: 'There are no companies'));
 
       final result = await companyRepository.fetchCompanies();
