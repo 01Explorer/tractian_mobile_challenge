@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tractian_challenge/injection_container.dart';
-import 'package:tractian_challenge/presentation/tree_view/bloc/tree_view_bloc.dart';
-import 'package:tractian_challenge/presentation/tree_view/bloc/tree_view_event.dart';
 
 import '../../../../core/helpers/constansts.dart';
 import '../../../../domain/entities/company_entity.dart';
-import '../../../tree_view/pages/tree_view_page.dart';
 
 class CompanyListTileComponent extends StatelessWidget {
   const CompanyListTileComponent({
@@ -21,16 +16,10 @@ class CompanyListTileComponent extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: InkWell(
-        onTap: () => Navigator.push(
+        onTap: () => Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => BlocProvider<TreeViewBloc>.value(
-              value: locator()..add(LoadTreeViewEvent(company: company)),
-              child: TreeView(
-                company: company,
-              ),
-            ),
-          ),
+          treeViewPageRoute,
+          arguments: company,
         ),
         child: ConstrainedBox(
           constraints: const BoxConstraints.expand(height: 100),
