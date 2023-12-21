@@ -53,13 +53,17 @@ abstract class Item extends Equatable {
   }
 
   bool isBeingSearched(String filter) {
+    bool returnValue = false;
+    final List<Item> toRemove = [];
     for (final child in itemChildren) {
       if (child.isBeingSearched(filter)) {
-        return true;
+        returnValue = true;
+        continue;
       }
+      toRemove.add(child);
     }
-
-    return name.toLowerCase().contains(filter.toLowerCase());
+    itemChildren.removeWhere((element) => toRemove.contains(element));
+    return name.toLowerCase().contains(filter.toLowerCase()) || returnValue;
   }
 
   void addChildren(Item item) {
