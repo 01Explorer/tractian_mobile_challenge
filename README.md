@@ -1,16 +1,6 @@
-# tractian_challenge
+# Tractian Mobile Challenge
 
-A new Flutter project.
+## Description
 
-## Getting Started
+This project is the tech challeng given by Tractian to its candidates. Hence since Tractian is working directly with maintenance in big companies and industries, the challenge is to build an hierarchical and dynamic tree view, showing a set of Locations, Assets and Components as well as being able to filter them.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
