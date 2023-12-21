@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tractian_challenge/core/helpers/extensions.dart';
+import 'package:tractian_challenge/presentation/tree_view/bloc/tree_view_bloc.dart';
+import 'package:tractian_challenge/presentation/tree_view/bloc/tree_view_state.dart';
 
 import '../../../../core/helpers/constansts.dart';
 import '../../../../domain/entities/abstract_classes/item.dart';
@@ -22,7 +26,8 @@ class ItemTileComponent extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(color: Colors.black),
-          ),
+          ).boldSubString(
+              (context.read<TreeViewBloc>().state as TreeViewLoaded).filter),
         ),
         if (itemToBuild is ComponentEntity) ...[
           const SizedBox(width: 4),
