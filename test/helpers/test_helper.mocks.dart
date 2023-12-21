@@ -16,6 +16,10 @@ import 'package:tractian_challenge/domain/entities/abstract_classes/item.dart'
 import 'package:tractian_challenge/domain/entities/company_entity.dart' as _i6;
 import 'package:tractian_challenge/domain/repositories/company_repository.dart'
     as _i3;
+import 'package:tractian_challenge/domain/usecases/fetch_companies_usecase.dart'
+    as _i10;
+import 'package:tractian_challenge/domain/usecases/get_company_tree_components_usecase.dart'
+    as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -135,4 +139,62 @@ class MockLocalDataSource extends _i1.Mock implements _i8.LocalDataSource {
               ),
             )),
           ) as _i4.Future<_i2.Either<_i5.Failure, List<Map<String, dynamic>>>>);
+}
+
+/// A class which mocks [GetCompanyTreeComponentsUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetCompanyTreeComponentsUseCase extends _i1.Mock
+    implements _i9.GetCompanyTreeComponentsUseCase {
+  MockGetCompanyTreeComponentsUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i7.Item>>> call(
+          {required _i6.CompanyEntity? companyEntity}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+          {#companyEntity: companyEntity},
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, List<_i7.Item>>>.value(
+            _FakeEither_0<_i5.Failure, List<_i7.Item>>(
+          this,
+          Invocation.method(
+            #call,
+            [],
+            {#companyEntity: companyEntity},
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, List<_i7.Item>>>);
+}
+
+/// A class which mocks [FetchCompaniesUsecase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFetchCompaniesUsecase extends _i1.Mock
+    implements _i10.FetchCompaniesUsecase {
+  MockFetchCompaniesUsecase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.CompanyEntity>>> call() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+        ),
+        returnValue:
+            _i4.Future<_i2.Either<_i5.Failure, List<_i6.CompanyEntity>>>.value(
+                _FakeEither_0<_i5.Failure, List<_i6.CompanyEntity>>(
+          this,
+          Invocation.method(
+            #call,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.CompanyEntity>>>);
 }
