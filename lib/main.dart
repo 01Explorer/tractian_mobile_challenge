@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tractian_challenge/core/configs/routes.dart';
 import 'package:tractian_challenge/core/configs/theme.dart';
+import 'package:tractian_challenge/core/helpers/constansts.dart';
 import 'package:tractian_challenge/injection_container.dart';
 import 'package:tractian_challenge/presentation/companies/bloc/company_bloc.dart';
 import 'package:tractian_challenge/presentation/companies/bloc/company_event.dart';
-import 'package:tractian_challenge/presentation/companies/pages/landing_page.dart';
 
 void main() {
   setupLocator();
@@ -22,9 +23,9 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        onGenerateRoute: AppRoutes.onGeneratedRoutes,
         theme: appTheme(),
-        home: const LandingPage(),
+        initialRoute: landingPageRoute,
       ),
     );
   }
