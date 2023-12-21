@@ -18,3 +18,7 @@ const String locationIcon = 'assets/images/location_icon.png';
 const String assetIcon = 'assets/images/asset_icon.png';
 const String componentIcon = 'assets/images/component_icon.png';
 const String tractianLog = 'assets/images/logo.png';
+
+//routes
+const String landingPageRoute = '/';
+const String treeViewPageRoute = '/TreeView';
