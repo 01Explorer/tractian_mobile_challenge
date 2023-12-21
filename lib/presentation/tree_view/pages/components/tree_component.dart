@@ -16,7 +16,6 @@ class TreeComponent extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 8),
       child: ExpansionTile(
-        initiallyExpanded: true,
         leading: itemToBuild.itemChildren.isEmpty ? const SizedBox() : null,
         controlAffinity: ListTileControlAffinity.leading,
         title: ItemTileComponent(itemToBuild: itemToBuild),
